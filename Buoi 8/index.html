@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <!-- Div menu-->
+    <div id="khoi-menu">
+        <div class="grid-menu-container">
+            <div class="grid-menu-item logo">
+                <div class="wrapper-container">
+                    <div class="wrapper-content-center">
+                        <img class="logo-img"
+                            src="https://cdn.freebiesupply.com/logos/large/2x/samsung-1-logo-png-transparent.png">
+                    </div>
+                </div>
+
+            </div>
+            <div class="grid-menu-item menu-list">
+
+
+
+            </div>
+
+        </div>
+    </div>
+    <!--Div khoi anh lon-->
+    <div id="khoi-tin-to" class="m-top-10">
+        <div class="gird-item-anh-to">
+            <img src="https://image.cdn2.seaart.ai/2023-06-22/37214954876997/b294634eedd0cf51e2e516de3ff99498a0b803c3_high.webp"
+                class="img-full-width anh-to-nhat">
+        </div>
+        <div class="grid-item-thong-tin">
+            <div class="khoi-tieu-de-to">
+                <h1 id="tieu-de-big">Ha noi trong tranh AI nhin dieu qua</h1>
+            </div>
+            <div class="khoi-noi-dung-to">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum inventore, ipsum reiciendis repellat
+                quaerat ipsa exercitationem, ducimus tempora commodi libero deleniti eaque earum assumenda quis nisi
+                nulla harum quisquam et? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam suscipit
+                earum, quae laudantium quidem, dolorem sint officiis, eligendi facere blanditiis illo. Possimus suscipit
+                enim, eveniet laborum incidunt doloribus quo quasi.
+            </div>
+            <div class="khoi-link-xem-them">
+                <a href="javascript:void(0)">Xem them</a>
+            </div>
+        </div>
+    </div>
+    <!-- div khoi 3 anh nho hon-->
+    <div id="khoi-cac-tin-nho" class="m-top-10">
+        
+
+
+    </div>
+    <script>
+
+
+        //Vanila Javascript (Javascript thuan)
+        var tieuDeTo = "Hà nội ô nhiễm không khí, anh em phải ngắm ảnh sạch cho thủ dâm tinh thần";
+        var noiDungTo = "Dưới bầu trời 'không khí thử thách' của Hà Nội: Khi thủ dâm tinh thần trở thành 'sạch khỏe' thay thế!"
+        // document.getElementById('tieu-de-big').innerHTML = tieuDeTo
+
+        $('#tieu-de-big').html(tieuDeTo)
+        $('.khoi-noi-dung-to').html(noiDungTo)
+
+        function renderMenu() {
+
+            var menus = ["Home", "Về chúng tôi", "Các món ăn", "Nhà hàng", "Đặt bàn", "Liên hệ"]
+            var html = "";
+            for (var i = 0; i < menus.length; i++) {
+                html = html + `
+                <div class="menu-item text-center-width">
+                    <div class="wrapper-container">
+                        <div class="wrapper-content-center menu-text">
+                            ${menus[i]}
+                        </div>
+                    </div>
+                </div>
+            `
+            }
+            console.log(html)
+            $('.menu-list').html(html);
+            var css_grid = ""
+            for (var i = 0; i < menus.length; i++) {
+                css_grid += "auto "
+            }
+            $('.menu-list').css('grid-template-columns', css_grid)
+        }
+        renderMenu()
+
+        var tins = [
+            {
+                hinhAnh: "https://image.cdn2.seaart.ai/2023-06-22/37214954876997/b294634eedd0cf51e2e516de3ff99498a0b803c3_high.webp",
+                tieuDe : "Ha noi hoi bui",
+                noiDung: "lorem ispium bonac ..."
+            },
+            {
+                hinhAnh: "https://dummyimage.com/600x400/000/fff",
+                tieuDe : "Ha noi hoi bui",
+                noiDung: "lorem ispium bonac ..."
+            },
+            {
+                hinhAnh: "https://dummyimage.com/600x400/000/ddd",
+                tieuDe : "Ha noi hoi bui",
+                noiDung: "lorem ispium bonac ..."
+            },
+            {
+                hinhAnh: "https://dummyimage.com/600x400/ddd/31c48c",
+                tieuDe : "Ha noi hoi bui",
+                noiDung: "lorem ispium bonac ..."
+            }
+        ]
+
+        var tinToNhat = tins[0];
+        
+        $('#tieu-de-big').html(tinToNhat.tieuDe);
+        $('.anh-to-nhat').attr('src',tinToNhat.hinhAnh);
+        $('.khoi-noi-dung-to').html(tinToNhat.noiDung);
+
+        var tinNhos = [];
+        for(var i = 1; i < tins.length; i++){
+            tinNhos.push(tins[i])
+        }
+        tinNhoHtml = ""
+        for(var i = 0; i < tinNhos.length; i++){
+            tinNhoHtml += `
+            <div class="tin-nho-item">
+                <div class="anh-tin-nho">
+                    <img src="${tinNhos[i].hinhAnh}"
+                        class="img-full-width">
+                </div>
+                <div class="tieu-de-tin-nho">
+                    ${tinNhos[i].tieuDe}
+                </div>
+            </div>
+            `
+        }
+        $('#khoi-cac-tin-nho').html(tinNhoHtml);
+
+        
+
+        // CSS selector de lam viec do
+    </script>
+</body>
+
+</html>
